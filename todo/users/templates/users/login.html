@@ -1,0 +1,27 @@
+{% extends "todo_app/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<br>
+<div class="content-section">
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class="border-bottom mb-4"> 
+          LOG IN
+        {{form|crispy }}
+        </fieldset>
+<div class="form-group" >
+    <button class="btn btn-outline-info type=submit" type="submit">login</button>
+</div>        
+    </form>
+
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            Need have an account? <a class="ml-2" href="{% url 'register' %}">Sign UP </a>
+        </small>
+
+    </div>
+
+</div>
+
+
+ {% endblock content %}

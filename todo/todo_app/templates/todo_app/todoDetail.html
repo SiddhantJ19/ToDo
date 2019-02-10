@@ -1,0 +1,25 @@
+   {% extends "todo_app/base.html" %}
+   {% block content %}
+   <h1>{{ todo.title }}</h1>
+   <a href="{% url 'add-task' todo.id %}"><button class="btn btn-outline-info" type="button">Add Task</button></a>
+    {% if tasks %}
+    <a href="{% url 'delete-list' todo.id %}"><button class="btn btn-outline-danger">Delete List</button></a>
+    {% for task in tasks %}
+    <article class="media content-section">
+        <div class="media-body">
+            <h2><a class="article-title" href="#">{{ task.title }}</a></h2>
+            <p class="article-content">{{ task.task_content }}</p>
+            {% if not task.done %}
+            <a href="{% url 'mark-done' task.id %}"><button class="btn btn-outline-success">Done</button></a>
+
+            {% else %}
+            <p>completed!</p>
+            {% endif %}
+            <a href="{% url 'delete-task' task.id %}"><button class="btn btn-outline-danger">Delete Task</button></a>
+        </div>
+    </article>
+    {% endfor %}
+    {% else %}
+    This list does not have any tasks. Click the button to add some.
+    {% endif %}
+    {% endblock content %}

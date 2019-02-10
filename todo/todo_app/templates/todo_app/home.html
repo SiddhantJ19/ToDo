@@ -1,0 +1,22 @@
+
+   {% extends "todo_app/base.html" %}
+   {% block content %}
+   <h1>Todo Home!</h1>
+   <a href="{% url 'add-list' %}"><button type="button" class="btn btn-outline-info">Add List</button></a>
+    {% for list in todo_lists %}
+    <article class="media content-section">
+            <div class="media-body">
+              <div class="article-metadata">
+               
+                <!-- <a class="mr-2" href="#">{{ list.user }}</a> -->
+                <!-- <small class="text-muted">{{ post.date_posted }}</small> -->
+              </div>
+              <h2><a class="article-title" href="{% url 'task-detail' list.id %}">{{ list.title }}</a></h2>
+              <p class="article-content">{{ list.content }}</p>
+             
+            </div>
+
+          </article>
+    {% endfor %}
+
+    {% endblock content %}
